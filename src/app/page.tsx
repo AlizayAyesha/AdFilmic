@@ -8,6 +8,7 @@ import SocialIcons from "@/components/SocialIcons";
 import { faqJsonLd } from "@/lib/faq-data";
 import {
   SITE_EMAIL,
+  SITE_FIVERR_URL,
   SITE_WHATSAPP,
   SITE_WHATSAPP_URL,
 } from "@/lib/site";
@@ -318,6 +319,22 @@ export default function Home() {
                     <span className="contact-val">{SITE_EMAIL}</span>
                   </div>
                 </a>
+                <a
+                  className="contact-row"
+                  href={SITE_FIVERR_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <div className="contact-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M20.5 5h-3.2V3.5C17.3 2.1 16.2 1 14.8 1H9.2C7.8 1 6.7 2.1 6.7 3.5V5H3.5C2.1 5 1 6.1 1 7.5v13C1 21.9 2.1 23 3.5 23h17c1.4 0 2.5-1.1 2.5-2.5v-13C23 6.1 21.9 5 20.5 5zM9.2 3.5h5.6V5H9.2V3.5zM12 18.5c-2.5 0-4.5-2-4.5-4.5S9.5 9.5 12 9.5s4.5 2 4.5 4.5-2 4.5-4.5 4.5z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <span className="contact-label">Fiverr</span>
+                    <span className="contact-val">Book on Fiverr</span>
+                  </div>
+                </a>
               </div>
               <div className="social-block">
                 <span className="contact-label">Follow</span>
@@ -331,8 +348,13 @@ export default function Home() {
                 Send a short project overview. We typically respond within one
                 business day.
               </p>
-              <a className="btn-grad" href={`mailto:${SITE_EMAIL}`}>
-                Email AdFilmic
+              <a
+                className="btn-grad"
+                href={SITE_FIVERR_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Book on Fiverr
               </a>
               <div className="cta-actions-secondary">
                 <a
@@ -342,6 +364,9 @@ export default function Home() {
                   rel="noopener noreferrer"
                 >
                   WhatsApp
+                </a>
+                <a className="btn-ghost" href={`mailto:${SITE_EMAIL}`}>
+                  Email
                 </a>
               </div>
             </div>

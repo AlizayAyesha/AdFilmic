@@ -5,6 +5,7 @@ import { FAQ_ITEMS } from "@/lib/faq-data";
 import {
   SITE_CALENDLY_URL,
   SITE_EMAIL,
+  SITE_FIVERR_URL,
   SITE_NAME,
   SITE_WHATSAPP_URL,
 } from "@/lib/site";
@@ -87,12 +88,14 @@ export default function FaqChatbot() {
   function followUpOptions(stillRemaining: number): ChatOption[] {
     if (stillRemaining <= 0) {
       return [
+        { id: "fiverr", label: "Book on Fiverr" },
         { id: "calendly", label: "Book a call" },
         { id: "end", label: "End chat" },
       ];
     }
     return [
       { id: "menu", label: "Ask another question" },
+      { id: "fiverr", label: "Book on Fiverr" },
       { id: "whatsapp", label: "Chat on WhatsApp" },
       { id: "email", label: "Email AdFilmic" },
       { id: "calendly", label: "Book a call" },
@@ -102,6 +105,7 @@ export default function FaqChatbot() {
   function showDoneOptions() {
     setMode("done");
     setOptions([
+      { id: "fiverr", label: "Book on Fiverr" },
       { id: "calendly", label: "Book a call" },
       { id: "end", label: "End chat" },
     ]);
@@ -131,6 +135,18 @@ export default function FaqChatbot() {
       return;
     }
 
+    if (id === "fiverr") {
+      setMessages((prev) => [...prev, { id: uid(), role: "user", text: label }]);
+      pushBot("Opening Fiverr so you can book a gig. Closing this chat now.", () => {
+        schedule(() => {
+          window.open(SITE_FIVERR_URL, "_blank", "noopener,noreferrer");
+          resetAndClose();
+        }, 600);
+      });
+      setOptions([]);
+      return;
+    }
+
     if (id === "calendly") {
       setMessages((prev) => [...prev, { id: uid(), role: "user", text: label }]);
       pushBot("Opening Calendly so you can pick a time. Closing this chat now.", () => {
@@ -146,9 +162,12 @@ export default function FaqChatbot() {
     if (id === "menu") {
       setMessages((prev) => [...prev, { id: uid(), role: "user", text: label }]);
       if (remainingFaqs.length === 0) {
-        pushBot("You've covered all of our FAQs. Would you like to book a call?", () => {
-          showDoneOptions();
-        });
+        pushBot(
+          "You've covered all of our FAQs. You can book on Fiverr or schedule a call.",
+          () => {
+            showDoneOptions();
+          }
+        );
         return;
       }
       setMode("menu");
@@ -192,7 +211,7 @@ export default function FaqChatbot() {
     pushBot(faq.a, () => {
       if (stillLeft <= 0) {
         pushBot(
-          "That covers all of our FAQs. You can book a call or end this chat.",
+          "That covers all of our FAQs. Book on Fiverr, schedule a call, or end this chat.",
           () => showDoneOptions()
         );
       } else {
@@ -262,7 +281,9 @@ export default function FaqChatbot() {
                   key={`${mode}-${opt.id}-${askedIds.length}`}
                   type="button"
                   className={`faq-chat-option${
-                    opt.id === "calendly" ? " faq-chat-option-primary" : ""
+                    opt.id === "fiverr" || opt.id === "calendly"
+                      ? " faq-chat-option-primary"
+                      : ""
                   }`}
                   onClick={() => handleOption(opt.id, opt.label)}
                 >

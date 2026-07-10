@@ -1,4 +1,10 @@
-import { SITE_EMAIL, SITE_NAME, SITE_WHATSAPP, absoluteUrl } from "./site";
+import {
+  SITE_EMAIL,
+  SITE_FIVERR_URL,
+  SITE_NAME,
+  SITE_WHATSAPP,
+  absoluteUrl,
+} from "./site";
 
 export type FaqItem = {
   id: string;
@@ -20,7 +26,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   {
     id: "how-to-start",
     q: "How do I start a project?",
-    a: `Email ${SITE_EMAIL} or message WhatsApp ${SITE_WHATSAPP} with your goals, timeline, and references. We typically reply within 24 hours and begin with a short discovery call.`,
+    a: `Book on Fiverr at ${SITE_FIVERR_URL}, email ${SITE_EMAIL}, or message WhatsApp ${SITE_WHATSAPP} with your goals, timeline, and references. We typically reply within 24 hours.`,
   },
   {
     id: "timeline",

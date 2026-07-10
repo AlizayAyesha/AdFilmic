@@ -739,7 +739,13 @@ nav {
   margin: 14px 0 0;
   line-height: 1.15;
 }
-.cta-actions-secondary { margin-top: 16px; }
+.cta-actions-secondary {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
 .btn-grad-inline { display: inline-block; margin-top: 32px; }
 .hero-inner { position: relative; z-index: 1; text-align: center; }
 .about-body-spaced { margin-top: 28px; }
