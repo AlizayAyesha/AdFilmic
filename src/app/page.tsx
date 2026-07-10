@@ -1,6 +1,7 @@
 import Nav from "@/components/Nav";
 import FadeUp from "@/components/FadeUp";
 import SlideLeft from "@/components/SlideLeft";
+import RevealAfter from "@/components/RevealAfter";
 import WorkCard from "@/components/WorkCard";
 import SiteFooter from "@/components/SiteFooter";
 import SocialIcons from "@/components/SocialIcons";
@@ -168,7 +169,7 @@ export default function Home() {
         </section>
 
         <section id="founder" className="section section-alt">
-          <FadeUp className="founder-inner">
+          <div className="founder-inner">
             <div className="founder-ident">
               <SlideLeft className="founder-photo">
                 <img
@@ -178,23 +179,31 @@ export default function Home() {
                   height={845}
                 />
               </SlideLeft>
-              <span className="label">Founder</span>
-              <h2 className="display founder-name">Shayan Ali Khan</h2>
-              <p className="founder-role">Founder, AdFilmic</p>
             </div>
-            <div>
-              <p className="founder-desc">
-                Shayan Ali Khan leads creative direction and video production at
-                AdFilmic, with a focus on documentary filmmaking, brand
-                commercials, product films, and high-retention short-form
-                content. Each project follows the same standard: clear narrative,
-                disciplined editing, and delivery that serves the brand.
-              </p>
+            <RevealAfter className="founder-copy" delayMs={520}>
+              <div className="founder-heading">
+                <span className="label">Founder</span>
+                <h2 className="display founder-name">Shayan Ali Khan</h2>
+                <p className="founder-role">Founder, AdFilmic</p>
+              </div>
+              <blockquote className="founder-quote">
+                <span className="founder-quote-mark" aria-hidden="true">
+                  “
+                </span>
+                <p>
+                  Shayan Ali Khan leads creative direction and video production
+                  at AdFilmic, with a focus on documentary filmmaking, brand
+                  commercials, product films, and high-retention short-form
+                  content. Each project follows the same standard: clear
+                  narrative, disciplined editing, and delivery that serves the
+                  brand.
+                </p>
+              </blockquote>
               <a className="btn-grad btn-grad-inline" href="#contact">
                 Discuss a Project
               </a>
-            </div>
-          </FadeUp>
+            </RevealAfter>
+          </div>
         </section>
 
         <section id="services" className="section">
