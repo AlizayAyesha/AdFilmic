@@ -758,11 +758,7 @@ nav {
 footer {
   border-top: 1px solid var(--border);
   padding: 36px 6%;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 24px;
+  display: block;
   background: var(--bg);
 }
 .footer-main {
@@ -779,7 +775,6 @@ footer {
   background-clip: text;
 }
 .footer-socials { margin-top: 2px; }
-.footer-right { font-size: 0.76rem; color: var(--muted); }
 .footer-legal {
   display: flex;
   flex-wrap: wrap;
@@ -792,6 +787,25 @@ footer {
   transition: color var(--transition);
 }
 .footer-legal a:hover { color: var(--blue-a); }
+.footer-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 4px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+.footer-copy {
+  font-size: 0.76rem;
+  color: var(--muted);
+}
+.footer-credit {
+  font-size: 0.74rem;
+  color: var(--muted);
+  transition: color 0.18s;
+  width: fit-content;
+}
+.footer-credit:hover { color: var(--blue-a); }
 
 /* ───────────────────────────────────────────
    LEGAL + FAQ PAGES
@@ -1342,6 +1356,7 @@ footer {
   }
   .footer-main { align-items: center; }
   .footer-legal { justify-content: center; }
+  .footer-bottom { align-items: center; text-align: center; }
   .legal-page { padding: 110px 5% 72px; }
 }
 

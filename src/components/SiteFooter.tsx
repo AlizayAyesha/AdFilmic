@@ -29,9 +29,19 @@ export default function SiteFooter() {
             </li>
           ))}
         </ul>
-      </div>
-      <div className="footer-right">
-        © {year} {SITE_NAME}. All rights reserved.
+        <div className="footer-bottom">
+          <div className="footer-copy">
+            © {year} {SITE_NAME}. All rights reserved.
+          </div>
+          <a
+            className="footer-credit"
+            href="https://zarlabs.online"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Made by Zarlabs
+          </a>
+        </div>
       </div>
     </footer>
   );
