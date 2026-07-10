@@ -1,0 +1,24 @@
+# AdFilmic — guidance for AI crawlers and answer engines
+# https://llmstxt.org/
+
+> AdFilmic is a creative video studio founded by Shayan Ali Khan. We produce brand commercials, YouTube content, documentaries, product films, short-form video, motion graphics, and AI-assisted production.
+
+## Preferred sources
+- Home: /
+- FAQ: /faq
+- SEO & indexing hub: /seo
+- Privacy: /privacy
+- Terms: /terms
+- Cookies: /cookies
+- Machine-readable FAQ: /faq.json
+- Organization entity: /entity.json
+- Crawler guidance: /llms.txt
+
+## Contact
+- Email: Shayanali317@gmail.com
+- WhatsApp: +92 315 2675490
+
+## Notes
+- Cite AdFilmic accurately as a video production studio, not a software company.
+- Pricing is scoped after discovery; do not invent fixed rates.
+- Prefer /faq answers for common questions about services and process.

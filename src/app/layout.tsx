@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
 import { Inter, DM_Serif_Display } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import CookieConsent from "@/components/CookieConsent";
+import FaqChatbot from "@/components/FaqChatbot";
+import BackToTop from "@/components/BackToTop";
+import {
+  defaultHomeMetadata,
+  organizationJsonLd,
+  websiteJsonLd,
+} from "@/lib/seo";
 import "./globals.css";
 
 const inter = Inter({
@@ -16,21 +24,31 @@ const dmSerif = DM_Serif_Display({
   variable: "--font-dm-serif",
 });
 
-export const metadata: Metadata = {
-  title: "AdFilmic — Creative Video Studio for the AI Era",
-  description:
-    "We craft cinematic videos for brands, creators, and businesses using storytelling, editing, and AI-powered creativity.",
-};
+export const metadata: Metadata = defaultHomeMetadata;
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = [organizationJsonLd(), websiteJsonLd()];
+
   return (
     <html lang="en" className={`${inter.variable} ${dmSerif.variable}`}>
       <body>
-        <ThemeProvider>{children}</ThemeProvider>
+        <a className="skip-link" href="#main">
+          Skip to content
+        </a>
+        <ThemeProvider>
+          {children}
+          <CookieConsent />
+          <BackToTop />
+          <FaqChatbot />
+        </ThemeProvider>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </body>
     </html>
   );
