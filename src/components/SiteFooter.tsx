@@ -4,10 +4,13 @@ import { SITE_FOUNDER, SITE_NAME, SITE_TAGLINE } from "@/lib/site";
 
 const legalLinks = [
   { href: "/faq", label: "FAQ" },
-  { href: "/seo", label: "SEO" },
   { href: "/privacy", label: "Privacy" },
   { href: "/terms", label: "Terms" },
   { href: "/cookies", label: "Cookies" },
+  // SEO checklist page — only linked in local development
+  ...(process.env.NODE_ENV !== "production"
+    ? [{ href: "/seo", label: "SEO" }]
+    : []),
 ];
 
 export default function SiteFooter() {

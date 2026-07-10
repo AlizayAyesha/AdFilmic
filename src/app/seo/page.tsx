@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import Nav from "@/components/Nav";
 import SiteFooter from "@/components/SiteFooter";
 import { buildPageMetadata } from "@/lib/seo";
@@ -9,6 +10,7 @@ export const metadata: Metadata = buildPageMetadata({
   title: "SEO, Indexing & Performance",
   description: `Sitemap, robots, AEO feeds, and page-speed / Search Console checklist for ${SITE_NAME}.`,
   path: "/seo",
+  noIndex: true,
 });
 
 const machineFeeds = [
@@ -29,19 +31,24 @@ const checklist = [
 ];
 
 export default function SeoPage() {
+  // Internal checklist — hidden on production deploys
+  if (process.env.NODE_ENV === "production") {
+    notFound();
+  }
+
   const psiUrl = `https://pagespeed.web.dev/analysis?url=${encodeURIComponent(SITE_URL)}`;
   const gscUrl = "https://search.google.com/search-console";
 
   return (
     <>
       <Nav />
-      <main className="legal-page">
+      <main id="main" className="legal-page">
         <div className="legal-inner">
           <p className="label">SEO · AEO · Performance</p>
           <h1 className="display legal-title">Indexing &amp; Site Health</h1>
           <p className="legal-updated">
             Tools and feeds that help {SITE_NAME} stay findable, fast, and
-            citable — for search engines and answer engines.
+            citable — for search engines and answer engines. (Dev only)
           </p>
 
           <h2 className="seo-section-title">Machine-readable feeds</h2>
